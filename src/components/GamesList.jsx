@@ -1,9 +1,12 @@
 import GameCard from './GameCard'
 
-function GamesList({ gamesArray }) {
+function GamesList({ gamesArray, filterByGenre }) {
+
+  const filteredGames = gamesArray.filter( game => game.genre.includes(filterByGenre) )
+
   return (
     <div className="games-list">
-      {/* show all the games here as a GameCard */}
+      { filteredGames.map((game) => <GameCard key={game.id} game={game} />) }
     </div>
   )
 }
